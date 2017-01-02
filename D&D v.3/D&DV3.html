@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>D&D</title>
+
+
+
+<!-- font awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="gridstack.css"/>
+    <link rel="stylesheet" href="gridstack-extra.css"/>
+    <link rel="stylesheet" href="style">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.0/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+    <script src="gridstack.js"></script>
+    <script src="gridstack.jQueryUI.js"></script>
+    <script src="typed/js/typed.js"></script>
+     <script type="text/javascript" src="sticker.min.js"></script>
+
+
+<!-- progression.js -->
+  <link href='progression.min.css' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="progression.min.js"></script>
+    <script>
+
+// progresion jQuery
+    jQuery(document).ready(function($) {
+            $("#myform").progression({
+              tooltipWidth: '200',
+              tooltipPosition: 'right',
+              tooltipOffset: '50',
+              showProgressBar: true,
+              showHelper: true,
+              tooltipFontSize: '14',
+              tooltipFontColor: 'fff',
+              progressBarBackground: 'fff',
+              progressBarColor: '6EA5E1',
+              tooltipBackgroundColor:'a2cbfa',
+              tooltipPadding: '10',
+              tooltipAnimate: true
+            });
+        });
+
+
+
+    $(function () {
+       $('[data-toggle="tooltip"]').tooltip();
+   });
+    // credit to admsev
+    (function($){
+
+      $.extend({
+        playSound: function(){
+          return $(
+            '<audio autoplay="autoplay" style="display:none;">'
+              + '<source src="' + arguments[0] + '.mp3" />'
+              + '<source src="' + arguments[0] + '.ogg" />'
+              + '<embed src="' + arguments[0] + '.mp3" hidden="true" autostart="true" loop="false" class="playSound" />'
+            + '</audio>'
+          ).appendTo('body');
+        }
+      });
+
+    })(jQuery);
+
+
+        window.onload = function() {
+            Sticker.init('.sticker');
+        }
+
+        $(function(){
+            $("#subhead").typed({
+              strings: ["Looking for someone to adventure with?", "I might be the warrior you're looking for.", "Find out with this adventure.^1000", "Attack the orcs to begin."],
+              typeSpeed: 0, cursorChar: ""
+            })
+        });
+
+
+var toAddTo = 0;
+// shooting
+$(document).ready(function(){
+    $(".badGuy").click(function(){
+      toAddTo = toAddTo +1;
+     $("#followerText").text(toAddTo);
+     if ((Math.random()) > .5){
+        $.playSound('infect4');
+     }
+    else {
+           $.playSound('wilhelmScream');
+    }
+
+if (toAddTo > 4)
+{
+      $("#jumbo5").show();
+      $("#arrow1").show();
+}
+
+
+    });
+});
+
+// character creation
+$(document).ready(function(){
+    $("#Go").click(function(){
+      toAddTo = toAddTo + 10;
+$("#followerText").text(toAddTo);
+$("#jumbo2").show();
+$("#arrow2").show();
+
+    });
+});
+
+
+
+$(document).ready(function(){
+    $(".badGuy").click(function(){
+      toAddTo = toAddTo +1;
+     $("#followerText").text(toAddTo);
+     if ((Math.random()) > .5){
+        $.playSound('infect4');
+     }
+    else {
+           $.playSound('wilhelmScream');
+    }
+
+if (toAddTo > 4)
+{
+      $("#jumbo5").show();
+      $("#arrow1").show();
+}
+
+
+    });
+});
+
+
+var found = false;
+$(document).ready(function (){
+$("#chest").click(function() {
+  if (found == false){
+    console.log("werk");
+  toAddTo = toAddTo + 5;
+  $("#followerText").text(toAddTo);
+  $.playSound('cash');
+  found = true;
+  $("#sites").show();
+}
+})
+})
+
+
+var inside = false;
+
+$(document).ready(function(){
+    $("#orc1").mouseleave(function(){
+    inside = false;
+    console.log("false");
+    });
+});
+
+$(document).ready(function(){
+    $("#orc1").mouseenter(function(){
+    inside = true;
+    console.log("true");
+    });
+});
+
+// <![CDATA[
+console.log ("noticed");
+var sparks=75; // how many sparks per clicksplosion
+var speed=33; // how fast - smaller is faster
+var bangs=5; // how many can be launched simultaneously (note that using too many can slow the script down)
+var colours=new Array('#d71c16');
+//                     blue    red     green   purple  cyan    orange  pink
+
+/****************************
+*   Clicksplosion Effect    *
+*(c)2012-3 mf2fm web-design *
+*  http://www.mf2fm.com/rv  *
+* DON'T EDIT BELOW THIS BOX *
+****************************/
+var intensity=new Array();
+var Xpos=new Array();
+var Ypos=new Array();
+var dX=new Array();
+var dY=new Array();
+var stars=new Array();
+var decay=new Array();
+var timers=new Array();
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var count=0;
+
+function addLoadEvent(funky) {
+  var oldonload=window.onload;
+  if (typeof(oldonload)!='function') window.onload=funky;
+  else window.onload=function() {
+    if (oldonload) oldonload();
+    funky();
+  }
+}
+
+addLoadEvent(clicksplode);
+function clicksplode() { if (document.getElementById) {
+
+  var i, j;
+  window.onscroll=set_scroll;
+  window.onresize=set_width;
+  document.onclick=eksplode;
+  set_width();
+  set_scroll();
+  for (i=0; i<bangs; i++) for (j=sparks*i; j<sparks+sparks*i; j++) {
+    stars[j]=createDiv('*', 13);
+    document.body.appendChild(stars[j]);
+  }
+
+}}
+
+function createDiv(char, size) {
+  var div, sty;
+  div=document.createElement('div');
+  sty=div.style;
+  sty.font=size+'px monospace';
+  sty.position='absolute';
+  sty.backgroundColor='transparent';
+  sty.visibility='hidden';
+  sty.zIndex='101';
+  div.appendChild(document.createTextNode(char));
+  return (div);
+}
+
+function bang(N) {
+  console.log("working?");
+  if ( inside === true){
+  var i, Z, A=0;
+  for (i=sparks*N; i<sparks*(N+1); i++) {
+    if (decay[i]) {
+      Z=stars[i].style;
+      Xpos[i]+=dX[i];
+      Ypos[i]+=(dY[i]+=1.25/intensity[N]);
+      if (Xpos[i]>=swide || Xpos[i]<0 || Ypos[i]>=shigh+sdown || Ypos[i]<0) decay[i]=1;
+	  else {
+        Z.left=Xpos[i]+'px';
+        Z.top=Ypos[i]+'px';
+	  }
+      if (decay[i]==15) Z.fontSize='7px';
+      else if (decay[i]==7) Z.fontSize='2px';
+      else if (decay[i]==1) Z.visibility='hidden';
+	  decay[i]--;
+	}
+	else A++;
+  }
+  if (A!=sparks) timers[N]=setTimeout('bang('+N+')', speed);
+}
+}
+
+function eksplode(e) {
+  var x, y, i, M, Z, N;
+  set_scroll();
+  y=(e)?e.pageY:event.y+sdown;
+  x=(e)?e.pageX:event.x+sleft;
+  N=++count%bangs;
+  M=Math.floor(Math.random()*3*colours.length);
+  intensity[N]=5+Math.random()*4;
+  for (i=N*sparks; i<(N+1)*sparks; i++) {
+    Xpos[i]=x;
+    Ypos[i]=y-5;
+    dY[i]=(Math.random()-0.5)*intensity[N];
+    dX[i]=(Math.random()-0.5)*(intensity[N]-Math.abs(dY[i]))*1.25;
+    decay[i]=16+Math.floor(Math.random()*16);
+    Z=stars[i].style;
+    if (M<colours.length) Z.color=colours[i%2?count%colours.length:M];
+    else if (M<2*colours.length) Z.color=colours[count%colours.length];
+    else Z.color=colours[i%colours.length];
+    Z.fontSize='13px';
+    Z.visibility='visible';
+  }
+  clearTimeout(timers[N]);
+  bang(N);
+}
+
+function set_width() {
+  var sw_min=999999;
+  var sh_min=999999;
+  if (document.documentElement && document.documentElement.clientWidth) {
+    if (document.documentElement.clientWidth>0) sw_min=document.documentElement.clientWidth;
+    if (document.documentElement.clientHeight>0) sh_min=document.documentElement.clientHeight;
+  }
+  if (typeof(self.innerWidth)=='number' && self.innerWidth) {
+    if (self.innerWidth>0 && self.innerWidth<sw_min) sw_min=self.innerWidth;
+    if (self.innerHeight>0 && self.innerHeight<sh_min) sh_min=self.innerHeight;
+  }
+  if (document.body.clientWidth) {
+    if (document.body.clientWidth>0 && document.body.clientWidth<sw_min) sw_min=document.body.clientWidth;
+    if (document.body.clientHeight>0 && document.body.clientHeight<sh_min) sh_min=document.body.clientHeight;
+  }
+  if (sw_min==999999 || sh_min==999999) {
+    sw_min=800;
+    sh_min=600;
+  }
+  swide=sw_min-7;
+  shigh=sh_min-7;
+}
+
+function set_scroll() {
+  if (typeof(self.pageYOffset)=='number') {
+    sdown=self.pageYOffset;
+    sleft=self.pageXOffset;
+  }
+  else if (document.body && (document.body.scrollTop || document.body.scrollLeft)) {
+    sdown=document.body.scrollTop;
+    sleft=document.body.scrollLeft;
+  }
+  else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+    sleft=document.documentElement.scrollLeft;
+    sdown=document.documentElement.scrollTop;
+  }
+  else {
+    sdown=0;
+    sleft=0;
+  }
+}
+
+// ]]>
+</script>
+
+    <style type="text/css">
+
+footer
+{
+background-color: #47adca;
+text-align: center;
+}
+
+        #grid1 {
+            background: lightgoldenrodyellow;
+            background-image: url("danpic.png");
+        }
+
+        #grid2 {
+            background: lightcyan;
+        }
+
+        .grid-stack-item-content {
+            color: #2c3e50;
+            text-align: center;
+            background-color: #18bc9c;
+        }
+
+        #grid2 .grid-stack-item-content {
+            background-color: #9caabc;
+        }
+
+        .grid-stack-item-removing {
+            opacity: 0.5;
+        }
+
+        .trash {
+            height: 150px;
+            margin-bottom: 20px;
+            background: rgba(255, 0, 0, 0.1) center center url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCIgdmlld0JveD0iMCAwIDQzOC41MjkgNDM4LjUyOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDM4LjUyOSA0MzguNTI5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTQxNy42ODksNzUuNjU0Yy0xLjcxMS0xLjcwOS0zLjkwMS0yLjU2OC02LjU2My0yLjU2OGgtODguMjI0TDMwMi45MTcsMjUuNDFjLTIuODU0LTcuMDQ0LTcuOTk0LTEzLjA0LTE1LjQxMy0xNy45ODkgICAgQzI4MC4wNzgsMi40NzMsMjcyLjU1NiwwLDI2NC45NDUsMGgtOTEuMzYzYy03LjYxMSwwLTE1LjEzMSwyLjQ3My0yMi41NTQsNy40MjFjLTcuNDI0LDQuOTQ5LTEyLjU2MywxMC45NDQtMTUuNDE5LDE3Ljk4OSAgICBsLTE5Ljk4NSw0Ny42NzZoLTg4LjIyYy0yLjY2NywwLTQuODUzLDAuODU5LTYuNTY3LDIuNTY4Yy0xLjcwOSwxLjcxMy0yLjU2OCwzLjkwMy0yLjU2OCw2LjU2N3YxOC4yNzQgICAgYzAsMi42NjQsMC44NTUsNC44NTQsMi41NjgsNi41NjRjMS43MTQsMS43MTIsMy45MDQsMi41NjgsNi41NjcsMi41NjhoMjcuNDA2djI3MS44YzAsMTUuODAzLDQuNDczLDI5LjI2NiwxMy40MTgsNDAuMzk4ICAgIGM4Ljk0NywxMS4xMzksMTkuNzAxLDE2LjcwMywzMi4yNjQsMTYuNzAzaDIzNy41NDJjMTIuNTY2LDAsMjMuMzE5LTUuNzU2LDMyLjI2NS0xNy4yNjhjOC45NDUtMTEuNTIsMTMuNDE1LTI1LjE3NCwxMy40MTUtNDAuOTcxICAgIFYxMDkuNjI3aDI3LjQxMWMyLjY2MiwwLDQuODUzLTAuODU2LDYuNTYzLTIuNTY4YzEuNzA4LTEuNzA5LDIuNTctMy45LDIuNTctNi41NjRWODIuMjIxICAgIEM0MjAuMjYsNzkuNTU3LDQxOS4zOTcsNzcuMzY3LDQxNy42ODksNzUuNjU0eiBNMTY5LjMwMSwzOS42NzhjMS4zMzEtMS43MTIsMi45NS0yLjc2Miw0Ljg1My0zLjE0aDkwLjUwNCAgICBjMS45MDMsMC4zODEsMy41MjUsMS40Myw0Ljg1NCwzLjE0bDEzLjcwOSwzMy40MDRIMTU1LjMxMUwxNjkuMzAxLDM5LjY3OHogTTM0Ny4xNzMsMzgwLjI5MWMwLDQuMTg2LTAuNjY0LDguMDQyLTEuOTk5LDExLjU2MSAgICBjLTEuMzM0LDMuNTE4LTIuNzE3LDYuMDg4LTQuMTQxLDcuNzA2Yy0xLjQzMSwxLjYyMi0yLjQyMywyLjQyNy0yLjk5OCwyLjQyN0gxMDAuNDkzYy0wLjU3MSwwLTEuNTY1LTAuODA1LTIuOTk2LTIuNDI3ICAgIGMtMS40MjktMS42MTgtMi44MS00LjE4OC00LjE0My03LjcwNmMtMS4zMzEtMy41MTktMS45OTctNy4zNzktMS45OTctMTEuNTYxVjEwOS42MjdoMjU1LjgxNVYzODAuMjkxeiIgZmlsbD0iI2ZmOWNhZSIvPgoJCTxwYXRoIGQ9Ik0xMzcuMDQsMzQ3LjE3MmgxOC4yNzFjMi42NjcsMCw0Ljg1OC0wLjg1NSw2LjU2Ny0yLjU2N2MxLjcwOS0xLjcxOCwyLjU2OC0zLjkwMSwyLjU2OC02LjU3VjE3My41ODEgICAgYzAtMi42NjMtMC44NTktNC44NTMtMi41NjgtNi41NjdjLTEuNzE0LTEuNzA5LTMuODk5LTIuNTY1LTYuNTY3LTIuNTY1SDEzNy4wNGMtMi42NjcsMC00Ljg1NCwwLjg1NS02LjU2NywyLjU2NSAgICBjLTEuNzExLDEuNzE0LTIuNTY4LDMuOTA0LTIuNTY4LDYuNTY3djE2NC40NTRjMCwyLjY2OSwwLjg1NCw0Ljg1MywyLjU2OCw2LjU3QzEzMi4xODYsMzQ2LjMxNiwxMzQuMzczLDM0Ny4xNzIsMTM3LjA0LDM0Ny4xNzJ6IiBmaWxsPSIjZmY5Y2FlIi8+CgkJPHBhdGggZD0iTTIxMC4xMjksMzQ3LjE3MmgxOC4yNzFjMi42NjYsMCw0Ljg1Ni0wLjg1NSw2LjU2NC0yLjU2N2MxLjcxOC0xLjcxOCwyLjU2OS0zLjkwMSwyLjU2OS02LjU3VjE3My41ODEgICAgYzAtMi42NjMtMC44NTItNC44NTMtMi41NjktNi41NjdjLTEuNzA4LTEuNzA5LTMuODk4LTIuNTY1LTYuNTY0LTIuNTY1aC0xOC4yNzFjLTIuNjY0LDAtNC44NTQsMC44NTUtNi41NjcsMi41NjUgICAgYy0xLjcxNCwxLjcxNC0yLjU2OCwzLjkwNC0yLjU2OCw2LjU2N3YxNjQuNDU0YzAsMi42NjksMC44NTQsNC44NTMsMi41NjgsNi41N0MyMDUuMjc0LDM0Ni4zMTYsMjA3LjQ2NSwzNDcuMTcyLDIxMC4xMjksMzQ3LjE3MnogICAgIiBmaWxsPSIjZmY5Y2FlIi8+CgkJPHBhdGggZD0iTTI4My4yMiwzNDcuMTcyaDE4LjI2OGMyLjY2OSwwLDQuODU5LTAuODU1LDYuNTctMi41NjdjMS43MTEtMS43MTgsMi41NjItMy45MDEsMi41NjItNi41N1YxNzMuNTgxICAgIGMwLTIuNjYzLTAuODUyLTQuODUzLTIuNTYyLTYuNTY3Yy0xLjcxMS0xLjcwOS0zLjkwMS0yLjU2NS02LjU3LTIuNTY1SDI4My4yMmMtMi42NywwLTQuODUzLDAuODU1LTYuNTcxLDIuNTY1ICAgIGMtMS43MTEsMS43MTQtMi41NjYsMy45MDQtMi41NjYsNi41Njd2MTY0LjQ1NGMwLDIuNjY5LDAuODU1LDQuODUzLDIuNTY2LDYuNTdDMjc4LjM2NywzNDYuMzE2LDI4MC41NSwzNDcuMTcyLDI4My4yMiwzNDcuMTcyeiIgZmlsbD0iI2ZmOWNhZSIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=) no-repeat;
+        }
+
+        .sidebar {
+            background: rgba(0, 255, 0, 0.1);
+            height: 150px;
+            padding: 25px 0;
+            text-align: center;
+        }
+
+        .sidebar .grid-stack-item {
+            width: 200px;
+            height: 100px;
+            border: 2px dashed green;
+            text-align: center;
+            line-height: 100px;
+            z-index: 10;
+            background: rgba(0, 255, 0, 0.1);
+            cursor: default;
+            display: inline-block;
+        }
+
+        .sidebar .grid-stack-item .grid-stack-item-content {
+            background: none;
+        }
+
+
+        #one {
+          background-color: #e5392c;
+          height: 120px;
+
+        }
+
+        #two {
+          background-color: #1057a9;
+          height: 120px;
+        }
+
+        #stick
+        {
+        margin: auto;
+        padding: 10px;
+
+        }
+
+        .block
+        {
+            border-radius: 55px;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 120px;
+            margin: 2px;
+            width: auto;
+        }
+
+        .sticker
+        {
+        border-radius: 100%;
+          display: inline-block;
+          width: 270px;
+          height: 270px
+           padding: inherit;
+          background-image: url("http://vignette1.wikia.nocookie.net/forgottenrealms/images/6/69/Goblins_-_Steve_Prescott.jpg/revision/latest?cb=20090519093515");
+
+        }
+        #stick .sticker-img
+        {
+        background-color: none;
+          background-image: url("danpic.png");
+        background-position: -100px -120px;
+        width: 270px;
+        height: 270px
+
+        }
+        #stick2 .sticker-img
+        {
+          background-image: url("http://syntaxxx.com/wp-content/uploads/2014/08/html5-logo-600-580x580.jpg");
+          background-position: -24px -640px;
+          background-size: 320px;
+        }
+        #stick3 .sticker-img
+        {
+          background-image: url("http://syntaxxx.com/wp-content/uploads/2014/01/intro-to-css3-logo-300.png");
+          background-position: -30px -19px;
+          background-size: 320px;
+        }
+
+        #stick4 .sticker-img
+        {
+          background-image: url("https://www.devbattles.com/images/upload/sand/2016-04/1461077338.jpg");
+          background-position: -250px -15px;
+          background-size: 780px;
+        }
+
+        #stick5 .sticker-img
+        {
+            background-image: url("https://www.sololearn.com/Icons/Courses/1051.png");
+            background-position: -28px -31px;
+        }
+#stick5
+{
+
+}
+
+        #stick6 .sticker-img
+        {
+            background-image: url("http://www.myexactamundo.com/wp-content/uploads/2014/05/java-logo.jpg");
+            background-position: 0px 0px;
+        }
+
+#stick7 .sticker-img
+{
+    background-image: url("http://sqlrx.com/images/SQLRx-logo_recreated_vector.png");
+    background-position: -50px -50px;
+    background-size: 790px;
+}
+
+#stick7
+{
+  background-image: url("http://castlesandcooks.com/wp-content/uploads/2012/07/Dragons_Eye_View_3-21_1-280x300.jpg");
+  background-size: 350px;
+
+}
+
+        #jumbo1
+        {
+          background-image: url("http://www.nerdsonearth.com/wp-content/uploads/2016/02/SCAG_2560x1600_Wallpaper.jpg");
+          background-size: 100%;
+          display: block;
+        }
+
+        #jumbo2
+        {
+        height: 900px;
+        }
+        #jumbo3
+        {
+          background-color: #E8B62B;
+height: 2350px;
+        }
+
+        #subhead
+        {
+          margin-top: 220px;
+        }
+        #drag
+        {
+
+        }
+
+        .example-1 .sticker-shadow
+        {
+                opacity: 0.6;
+        }
+
+        .jumbotron
+        {
+          background-color: #03dc8b;
+          height: 104vh;
+          margin-bottom: 0;
+          margin-top: 0;
+
+          position: relative;
+        }
+
+        body
+        {
+
+          color: white;
+          font-family: Lato;
+        }
+
+        p
+        {
+          text-align: center;
+          vertical-align: middle;
+               }
+
+        h3
+        {
+          display: block;
+          text-align: center;
+          margin-top: 15px;
+          align-items: center;
+        }
+
+        iframe
+        {
+          height: 150vh;
+          width: 100%;
+
+
+        }
+        #dan
+        {
+          background-image: url("danpic.png");
+        }
+
+#follower
+{
+  background-color: #F44336;
+  border-radius: 100%;
+  border-style: solid;;
+  border-color: #5C87DD;
+  float:left;
+  text-align: center;
+  position: fixed;
+  height: 100px;
+  width: 100px;
+  color: black;
+  z-index: 10;
+  border-width: thick;
+
+}
+
+#orc1
+{
+  height: 100vh;
+  width: 700px;
+  position: absolute;
+  background-color: none;
+  top: 0;
+  left: 0px;
+  cursor: crosshair;
+
+}
+
+#jumbo4
+{
+  background-color: red;
+}
+
+.grid-stack-item
+{
+  height: 200px;
+  width: 200px;
+  margin: 20px;
+}
+.grid-stack-item-content
+{
+  height: 200px;
+  width: 200px;
+  margin: 15px;
+}
+#me
+{
+  background-image: url("danpic.png");
+
+}
+
+#jumbo5
+{
+  background-color: #F4402F;
+  height: 1200px;
+  display: none;
+}
+.col-sm-3
+{
+  border-style: dashed;
+  border-color: black;
+  background-color: #3A7DFA;
+  height: 200px;
+  width: 200px;
+  margin: 15px;
+}
+#martin
+{
+  height: 1350px;
+}
+
+#myform{
+  color: black;
+            width:300px;
+
+display: inline-block;
+   text-align: center;
+        }
+        label{
+            display:block;
+      margin-bottom:5px;
+      color:white;
+        }
+    button,    input,textarea{
+            width:100%;
+      padding:10px;
+      border-radius:3px;
+      border:0px;
+        }
+input:focus,textarea:focus
+{
+  outline:0;
+
+}
+#formDiv
+{
+  text-align: center;
+    width: 50%;
+}
+
+#arrow1
+{
+  text-align: center;
+  align-items: center;
+  width: 50%;
+  z-index: 44;
+  margin: auto;
+  margin-top: 140px;
+  display: none;
+}
+
+#arrow2
+{
+  text-align: center;
+  align-items: center;
+  width: 50%;
+  z-index: 44;
+  margin: auto;
+  margin-top: 140px;
+  display: none;
+}
+
+#sites
+{
+  display: none;
+}
+
+    </style>
+</head>
+<body>
+  <div id = "jumbo1" class = "jumbotron text-center">
+<a href = "#">
+<div id = "follower" data-toggle="tooltip" title = "This keeps track of your experience points.">
+  <div class = "container">
+<div class = "row" >
+XP
+
+</div>
+<hr>
+
+    <div class = "row">
+<p id = "followerText" > </p>
+</div>
+</div>
+</div>
+</a>
+<div class = "badGuy" id = "orc1"> </div>
+
+  <h1 id = "subhead">  D&D</h1>
+  <h2 id = "instructions1" > </h2>
+<div id = "arrow1">
+
+<i class="fa fa-arrow-circle-down fa-3x" aria-hidden="true"></i>
+</div>
+
+  </div>
+
+<div class = "jumbotron" id = "jumbo5">
+      <h2 > Character Creation </h2>
+  <div class = "container" id = "formDiv">
+  <form id="myform">
+
+          <p>
+              <label for=""> Name </label>
+              <input value = "Daniel Olivieri"  data-progression type="text" data-helper="If you can't think of a name for yourself, I recommend the name Gort." name="name" value="" placeholder="">
+          </p>
+
+          <p>
+              <label for="">Class</label>
+              <input value = "Developer & Writer" data-progression type="text" data-helper="This could be anything from ninja-warlock to accountant" name="email" value="" placeholder="">
+          </p>
+
+
+
+              <p class="left">
+              <label for="">School</label>
+              <input value = "Kenyon College" data-progression type="text" data-helper="Where did your character learn their tricks?" name="mytel" value="" placeholder="">
+          </p>
+
+              <p class="right">
+              <label for="">GPA</label>
+              <input value = "3.7" data-progression type="text" data-helper="A solid GPA is a huge help to any true adventurer" name="mytel" value="" placeholder="">
+          </p>
+
+          <p>
+              <label for="">Alignment</label>
+              <input value = "Trying to be Good" data-progression name="" data-helper="Are you good? Bad? Ugly?"></textarea>
+          </p>
+          <p>
+              <label for="">Hit Points</label>
+              <input value = "20" data-progression name="" data-helper="I based my hit points off of my age. You can choose whatever number you want."></textarea>
+          </p>
+          <p>
+              <label for="">Personality</label>
+              <textarea  data-progression name="" data-helper="What's your character like?">A nerd who's excited to be creative.</textarea>
+          </p>
+
+          <p>
+              <button type='button' id = "Go" > Create </button>
+          </p>
+</div>
+
+      </form>
+      <div id = "arrow2">
+
+      <i class="fa fa-arrow-circle-down fa-3x" aria-hidden="true"></i>
+      </div>
+
+</div>
+
+  <div id = "jumbo2" class = "jumbotron text-center">
+
+    <div class = "container">
+  <div class = "row">
+    <h3 id = "subhead2">  my character abilities</h3>
+    <p> Find and Click on the Treasure Chest </p>
+    <!--<div class="sticker example-1" id = "stick"></div> -->
+    <div class = "row">
+    <div class = "col-sm-4" >
+    <h3> HTML </h3>
+     <div class="sticker example-1" id = "stick2"></div>
+
+     </div>
+     <div class = "col-sm-4" >
+  <h3> CSS </h3>
+<div class="sticker example-1" id = "stick3"></div>
+
+    </div>
+    <div class = "col-sm-4" >
+        <h3> Javascript </h3>
+  <div class="sticker example-1" id = "stick4"></div>
+
+    </div>
+
+    </div>
+
+<div class = "row">
+  <div class = "col-sm-4" >
+      <h3> C++ </h3>
+<div class="sticker example-1" id = "stick5"></div>
+
+  </div>
+  <div class = "col-sm-4" >
+      <h3> Java </h3>
+<div class="sticker example-1" id = "stick6"></div>
+  </div>
+  <div class = "col-sm-4" id = "chest" >
+      <h3> SQL </h3>
+  <div class="sticker example-1" id = "stick7"></div>
+  </div>
+</div>
+
+
+  </div>
+  </div>
+  </div>
+
+<div id = "sites">
+
+  <iframe src="https://danielfrancisolivieri.github.io/" name="targetframe" allowTransparency="true" scrolling="no" align = "center" frameborder="0" ></iframe>
+  <a href= "https://danielfrancisolivieri.github.io/">
+    </a>
+    <iframe src="https://danielfrancisolivieri.github.io/Martin/" name="targetframe" allowTransparency="true" scrolling="no" align = "center" frameborder="0" id = "martin" ></iframe>
+    <a href= "https://danielfrancisolivieri.github.io/Martin/">
+      </a>
+      <iframe src="http://jimskon.com/solar/Solar.html" name="targetframe" allowTransparency="true" scrolling="no" align = "center" frameborder="0" ></iframe>
+      <a href= "http://jimskon.com/solar/Solar.html"></a>
+      <iframe src="http://mappingancienttexts.net/visualizations/cassiope/" name="targetframe" allowTransparency="true" scrolling="no" align = "center" frameborder="0" ></iframe>
+      <a href= "http://mappingancienttexts.net/visualizations/cassiope/"></a>
+
+
+<footer>
+Designed by Daniel Olivieri
+</footer>
+
+</div>
+</body>
+</html>
