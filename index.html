@@ -29,15 +29,20 @@
     <script src="typed/js/typed.js"></script>
      <script type="text/javascript" src="sticker.min.js"></script>
 
+<!-- Quiz -->
+
 
 <!-- progression.js -->
-  <link href='progression.min.css' rel='stylesheet' type='text/css'>
-	<script type="text/javascript" src="progression.min.js"></script>
+<link href='progression.min.css' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="progression.min.js"></script>
+
     <script>
+
+
 
 // progresion jQuery
     jQuery(document).ready(function($) {
-            $("#myform").progression({
+            $("#form1").progression({
               tooltipWidth: '200',
               tooltipPosition: 'right',
               tooltipOffset: '50',
@@ -58,6 +63,7 @@
     $(function () {
        $('[data-toggle="tooltip"]').tooltip();
    });
+
     // credit to admsev
     (function($){
 
@@ -119,6 +125,8 @@ $("#followerText").text(toAddTo);
 $("#jumbo2").show();
 $("#arrow2").show();
 
+$("#bard").text("Hello, " + $("#name").val() + ", what do you want to hear?");
+console.log("Hello World");
     });
 });
 
@@ -137,7 +145,7 @@ $(document).ready(function(){
 
 if (toAddTo > 4)
 {
-      $("#jumbo5").show();
+    //  $("#jumbo5").show();
       $("#arrow1").show();
 }
 
@@ -339,6 +347,7 @@ function set_scroll() {
 
     <style type="text/css">
 
+
 footer
 {
 background-color: #47adca;
@@ -445,6 +454,11 @@ text-align: center;
         height: 270px
 
         }
+        #stick2
+        {
+          background-image: url("http://castlesandcooks.com/wp-content/uploads/2010/11/Steve-Prescott-Lizardfolk.jpg");
+          background-position: -340px 5px;
+        }
         #stick2 .sticker-img
         {
           background-image: url("http://syntaxxx.com/wp-content/uploads/2014/08/html5-logo-600-580x580.jpg");
@@ -457,6 +471,11 @@ text-align: center;
           background-position: -30px -19px;
           background-size: 320px;
         }
+        #stick4
+        {
+          background-image: url("http://vignette1.wikia.nocookie.net/forgottenrealms/images/6/69/Goblins_-_Steve_Prescott.jpg/revision/latest?cb=20090519093515");
+          background-position: -200px -100px;
+        }
 
         #stick4 .sticker-img
         {
@@ -464,7 +483,11 @@ text-align: center;
           background-position: -250px -15px;
           background-size: 780px;
         }
-
+        #stick5
+        {
+          background-image: url("http://vignette1.wikia.nocookie.net/forgottenrealms/images/6/69/Goblins_-_Steve_Prescott.jpg/revision/latest?cb=20090519093515");
+          background-position: -400px -1px;
+        }
         #stick5 .sticker-img
         {
             background-image: url("https://www.sololearn.com/Icons/Courses/1051.png");
@@ -495,6 +518,49 @@ text-align: center;
 
 }
 
+#writing
+{
+  background-image: url("https://s-media-cache-ak0.pinimg.com/originals/93/c3/41/93c3418634a01e1412840754bfd4eb1a.jpg");
+  background-size: 100%;
+}
+
+.bubble
+{
+position: absolute;
+right: 320px;
+top: 320px;
+width: 250px;
+height: 120px;
+padding: 0px;
+background: #FFFFFF;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 40px;
+color: black;
+
+
+}
+
+.bubble p
+{
+  padding: 29px;;
+
+}
+
+.bubble:after
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 0 15px 27px;
+border-color: transparent #FFFFFF;
+display: block;
+width: 0;
+z-index: 1;
+right: -27px;
+top: 76px;
+}
+
         #jumbo1
         {
           background-image: url("http://www.nerdsonearth.com/wp-content/uploads/2016/02/SCAG_2560x1600_Wallpaper.jpg");
@@ -504,12 +570,14 @@ text-align: center;
 
         #jumbo2
         {
+          color: white;
         height: 900px;
+        background-image: url("https://s-media-cache-ak0.pinimg.com/originals/38/d0/16/38d016d0b6064be29639370929dc626d.jpg");
+        background-size: 100%;
         }
-        #jumbo3
+        #jumbo6
         {
-          background-color: #E8B62B;
-height: 2350px;
+          background-image: url("https://raw.githubusercontent.com/loverajoel/jstips/gh-pages/resources/jstips-header-blog.gif");
         }
 
         #subhead
@@ -559,7 +627,7 @@ height: 2350px;
 
         iframe
         {
-          height: 150vh;
+          height: 170vh;
           width: 100%;
 
 
@@ -624,24 +692,18 @@ height: 2350px;
 #jumbo5
 {
   background-color: #F4402F;
-  height: 1200px;
-  display: none;
+  height: 840px;
+  background-size: 100% auto;
+background-image: url("http://dungeonsmaster.com/wp-content/uploads/2013/04/planeswalkers_pantheon_by_cryptcrawler-d41iikm.jpg");
 }
-.col-sm-3
-{
-  border-style: dashed;
-  border-color: black;
-  background-color: #3A7DFA;
-  height: 200px;
-  width: 200px;
-  margin: 15px;
-}
+
 #martin
 {
   height: 1350px;
 }
 
-#myform{
+.myform
+{
   color: black;
             width:300px;
 
@@ -653,7 +715,7 @@ display: inline-block;
       margin-bottom:5px;
       color:white;
         }
-    button,    input,textarea{
+    #Go,  select,  input,textarea{
             width:100%;
       padding:10px;
       border-radius:3px;
@@ -694,14 +756,113 @@ input:focus,textarea:focus
 
 #sites
 {
-  display: none;
+  margin: 0px;
+}
+
+.myButton2 {
+
+	background-color:#f43f2f;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	border:1px solid #f43f2f;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:19px;
+	padding:12px 37px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #283966;
+  width: 25%;
+  position: relative;
+  top: 80vh;
+
+}
+.myButton2:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f43f2f), color-stop(1, #f43f2f));
+	background:-moz-linear-gradient(top, #f43f2f 5%, #f43f2f 100%);
+	background:-webkit-linear-gradient(top, #f43f2f 5%, #f43f2f 100%);
+	background:-o-linear-gradient(top, #f43f2f 5%, #f43f2f 100%);
+	background:-ms-linear-gradient(top, #f43f2f 5%, #f43f2f 100%);
+	background:linear-gradient(to bottom, #f43f2f 5%, #f43f2f 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f43f2f', endColorstr='#f43f2f',GradientType=0);
+	background-color:#f43f2f;
+}
+
+.modal-content
+{
+  color: black;
+  text-align: left;
+}
+.modal-dialog
+{
+  width: 80%;
+}
+
+#samples
+{
+  margin-top: 0px;
+  margin-bottom: 120px;
+  width: 50%;
+}
+
+#dragon
+{
+  background-image: url("http://3.bp.blogspot.com/-gA_uRC-u0EA/T_ETNA4-kGI/AAAAAAAABHU/handP8cuAsQ/s1600/flight-paladin.jpg");
+  background-size: 100%;
+  background-position: center;
+}
+#tresoro
+{
+  background-image: url("http://2.bp.blogspot.com/-zPNcpnb_pvI/Vecsyaq-C1I/AAAAAAAABi0/iCN5kwmX_Zw/s1600/90653cadfa9d36adfec01a4fc0ba9f81d6a084e0.jpg");
+color: #F4402F;
+}
+
+select
+{
+  margin: 10px;
+}
+.card
+{
+  text-align: center;
+  width: 50%;
+}
+
+#danPic
+{
+  border-radius: 100%;
+  align-items: center;
+height: 300px;
+vertical-align:middle;
+margin-top: 100px;
+margin-left: 50px;
+}
+
+a
+{
+  text-decoration: none;
+}
+.modal-title
+{
+  text-align: center;
+}
+
+#tresoro h1
+{
+  margin-top: 10%;
+}
+
+#jumbo5 h3
+{
+  margin-top: 10px;
 }
 
     </style>
 </head>
 <body>
   <div id = "jumbo1" class = "jumbotron text-center">
-<a href = "#">
+
 <div id = "follower" data-toggle="tooltip" title = "This keeps track of your experience points.">
   <div class = "container">
 <div class = "row" >
@@ -722,49 +883,49 @@ XP
   <h2 id = "instructions1" > </h2>
 <div id = "arrow1">
 
-<i class="fa fa-arrow-circle-down fa-3x" aria-hidden="true"></i>
+<i class="fa fa-arrow-circle-down fa-4x" aria-hidden="true"></i>
 </div>
 
   </div>
 
 <div class = "jumbotron" id = "jumbo5">
-      <h2 > Character Creation </h2>
+      <h3 > Character Creation </h3>
   <div class = "container" id = "formDiv">
-  <form id="myform">
+  <form class="myform" id = "form1">
 
           <p>
               <label for=""> Name </label>
-              <input value = "Daniel Olivieri"  data-progression type="text" data-helper="If you can't think of a name for yourself, I recommend the name Gort." name="name" value="" placeholder="">
+              <input id = "name"  data-progression = "" type="text" data-helper="If you can't think of a name for yourself, I recommend the name Gort." name="name" placeholder="Daniel Olivieri">
           </p>
 
           <p>
               <label for="">Class</label>
-              <input value = "Developer & Writer" data-progression type="text" data-helper="This could be anything from ninja-warlock to accountant" name="email" value="" placeholder="">
+              <input  data-progression = "" type="text" data-helper="This could be anything from ninja-warlock to accountant" placeholder="Developer & Writer">
           </p>
 
 
 
               <p class="left">
               <label for="">School</label>
-              <input value = "Kenyon College" data-progression type="text" data-helper="Where did your character learn their tricks?" name="mytel" value="" placeholder="">
+              <input data-progression = "" type="text" data-helper="Where did your character learn their tricks?" placeholder="Kenyon College">
           </p>
 
               <p class="right">
               <label for="">GPA</label>
-              <input value = "3.7" data-progression type="text" data-helper="A solid GPA is a huge help to any true adventurer" name="mytel" value="" placeholder="">
+              <input  data-progression = "" type="text" data-helper="A solid GPA is a huge help to any true adventurer" placeholder="3.7">
           </p>
 
           <p>
               <label for="">Alignment</label>
-              <input value = "Trying to be Good" data-progression name="" data-helper="Are you good? Bad? Ugly?"></textarea>
+              <input data-progression = "" placeholder = "Trying to be Good" data-progression name="" data-helper="Are you good? Bad? Ugly?"></textarea>
           </p>
           <p>
               <label for="">Hit Points</label>
-              <input value = "20" data-progression name="" data-helper="I based my hit points off of my age. You can choose whatever number you want."></textarea>
+              <input data-progression = "" placeholder = "20" data-progression name="" data-helper="I based my hit points off of my age. You can choose whatever number you want."></textarea>
           </p>
           <p>
               <label for="">Personality</label>
-              <textarea  data-progression name="" data-helper="What's your character like?">A nerd who's excited to be creative.</textarea>
+              <textarea data-progression = ""  placeholder = "Work it" data-helper="What's your character like?"></textarea>
           </p>
 
           <p>
@@ -784,8 +945,8 @@ XP
 
     <div class = "container">
   <div class = "row">
-    <h3 id = "subhead2">  my character abilities</h3>
-    <p> Find and Click on the Treasure Chest </p>
+    <h3 id = "subhead2">  My Weapons of Choice</h3>
+    <p> Click on the Treasure Chest When You Find it </p>
     <!--<div class="sticker example-1" id = "stick"></div> -->
     <div class = "row">
     <div class = "col-sm-4" >
@@ -827,18 +988,290 @@ XP
   </div>
   </div>
 
-<div id = "sites">
+<div id = "writing" class = "jumbotron">
+<div class="bubble"> <p id = "bard" > Hello, Daniel Olivieri, what story do you want to hear?</p> </div>
 
+
+
+<!-- modal 1 -->
+
+<div class = "container" id = "samples">
+
+<div class = "row">
+
+<button class = "myButton2"  data-toggle="modal" href="#myModal"   data-toggle="tooltip" title = "This won a Gold Key from the Scholastic Art and Writing Awards">Standardized</button>
+
+<button class = "myButton2"  data-toggle="modal" href="#myModal2" data-toggle="tooltip" title = "This won a national Gold Medal from the Scholastic Art and Writing Awards"  >& Dragons</button>
+
+<button class = "myButton2"  data-toggle="modal" href="#myModal3" data-toggle="tooltip" title = "This was published by Flash Fiction Magazine" >Physics</button>
+
+</div>
+</div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Standardized</h4>
+        </div>
+        <div class="modal-body">
+          <p>Today in class, we are going to commit a standardized test. When you fill in your answers, make sure not to leave any stray marks outside of the bubbles. If any stray marks do escape from your bubble, you should capture them and neuter them before they can reproduce – this school already has a big enough stray-marks problem as it is.
+This is a standardized test that assesses how well you will perform on standardized tests. You are permitted to have a ruler with you on this test, but you are not allowed to use it. You are permitted to use a calculator on this test, but you are not permitted to have one with you.
+You may begin… now. You have a while (until the sun expands and swallows the earth in an apocalyptic supernova that will destroy all mankind) to finish the following test.
+1. When you get the test, you should __________________.
+a. Start filling in every bubble, because then you are guaranteed to fill in all the right ones
+b. Panic
+c. Sit quietly and wonder what the meaning of life is and whether it has anything to do with using a painted stick to fill in miniature circles with graphite for hours on end
+d. Did I mention the panic option?
+2. Anyone caught using a number 3 pencil will be ________________.
+a. Exiled to a country where they are not wealthy enough to have the number 3
+b. Expelled and forbidden to ever write again, forced to forage for spare adverbs and loose prepositions in the quad during the day and hide in the black box theater at night
+c. Given a detention during which they will do nothing but hear fingernails scrape against a blackboard for three hours straight
+d. Let off with no consequences because current bubble-reading technology can easily read marks made by different kinds of pencils and pens
+3. No essay is complete unless you include a _______________ to add credibility.
+a. Hamster
+b. Drop of blood
+c. Quote from Pulp Fiction
+d. Live eel
+4. The best word to describe standardized testing is ________________.
+a. Futile
+b. Feudal
+c. A brilliant and flawless program written by enormously talented and intelligent people who have fantastic smiles and are really good at writing tests that are not biased
+d. Evil incarnate
+5. When you get to a tricky question you should ________________.
+a. Despair
+b. Ponder
+c. Put the pond in ponder and go to your local lake to reason it out aqua-style
+d. Invoke the ancient right of trial by combat.
+Please read the passage below, which applies to question 6. Analyze for a very shallow meaning.
+“We’ve all been through it before and wondered, ‘Why?’ Keystones, PSSAs, DRPs… While I’m not saying that it is a waste of money to use $1.1 billion to administer tests that have been easily cheated on and shown to be unreliable, biased, time-consuming, and unpopular, I’m just saying that you could buy a whole lot of ice cream with $1.1 billion. Ice cream is actually a whole lot like standardized testing; They each cause screaming, freeze kids’ brains, are given out at school, have to be closely protected before they are used, and occasionally have pieces of chocolate in them. Despite any jokes made at its expense, Keystone testing is a time-honored, two-year-old tradition that means a lot to Harriton students. For juniors and seniors specifically, it means sleeping in another two hours. “
+6. This passage is best described as _______________.
+a. Accurate
+b. Persuasive
+c. A pack of lies that degrades everything the hardworking test writers strive for
+d. Clearly biased
+7. Stop – ________________.
+a. Hammer time
+b. Drop, and roll
+c.Kony
+d. You’re breaking my heart
+8. I used to be an adventurer like you, but then I ________________.
+a. Settled down, had a few kids, and started my own LOLcat factory
+b. Took an arrow to the kidney
+c. Was fired for leaving trash in the LGI
+d. Stopped playing Skyrim
+9. If you like it and you love it, then you ________________.
+a. Put a ring on it
+b. Send it a Facebook message asking if it would want to hang out one day, or something
+c. Quote Beyonce to it
+d. Sit quietly and write love poems on your standardized test response sheet
+10. If you add 1024 to 1024, you get _______________.
+a. A sense of accomplishment
+b. Something to brag about to your friends
+c. How should I know? You did not allow me to use a calculator on this test.
+d. In trouble for playing 2048 in class
+11. Why is the writer of this test reverting to pop culture references instead of challenging questions that test your reasoning ability?
+a. Low attention span
+b. Not getting paid enough to care
+c. Has sympathy for the test-takers
+d. All of the above
+12. What should the writer of this test do now that he has quit his test-writing job?
+a. Embark on an epic journey that will test his charisma, wit, and swordsmanship before teaching him the meaning of life itself.
+b. Eat a hot pocket and fall asleep on the couch.
+c. Become a professional turtle thief.
+d. Write an article for the Harriton Banner satirizing the concept of standardized testing.
+Answer key: C, A, D, C, D, C, A, C, D, D, D, B. No room for variation.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- modal 2 -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal2" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">& Dragons</h4>
+          </div>
+          <div class="modal-body">
+            A legion of animated skeletons with +2 short swords careens towards you, a Warlock summons the flames of Phlegethos to engulf your village, and an Ethereal Cyclops devours your companions. On top of all of that, you're out of Pepsi.
+      This is Dungeons and Dragons.
+      Dungeons and Dragons is the closest thing to a hallucinogenic drug that most nerds will ever take. You sit down with your friends and, using rulebooks and dice instead of LSD and bongs, you enter a collective dream. One among you --- the Dungeon Master --- narrates events. He or she (statistically speaking, it’s probably a “he”) creates a world ripe for adventure, using maps and funny voices as needed. The rest of the participants --- the players --- create characters and pilot them through that world. Rolling twenty-sided die takes the place of throwing knives and figurines take the place of Goblins and Warlords. Together the players work their way through quests, conspire to gain treasure, and distract each other from the fact that they don’t have girlfriends. (Disclaimer --- that was a joke --- I know several people who both play Dungeons and Dragons and have girlfriends. In fact, one of them got to know said girlfriend by playing Dungeons and Dragons. So take that, stereotypes.)
+      Of all the magic that goes on in Dungeons and Dragons, my favorite is storytelling. In Dungeons and Dragons you don’t watch a character fight battles, you storm into the battles and fight them for yourself.
+       Most people see roleplaying games as just a way to spend a night telling nerdy jokes with your friends (Example: a bibliography? Now that's what I call "sourcery"). Fun as that is, I think Dungeons and Dragons is about more than twenty-sided dice and diet soda. I think that if you stop playing Dungeons and Dragons when you stand up from the gaming table, you never fully understood it in the first place. I think fiction, in any shape it takes, is about finding a certain place. Not just Winterfell or Endor. A place we all contain, but may rarely visit.
+       I (as far as you know) have never eviscerated an orc, impaled a Frost Troll, or defenestrated a hobgoblin. How can I find truth in characters who do these ridiculous things?
+       Like the characters they hold, stories about heroes survive what should logically kill them. Through the Fall of Rome and the Bubonic plague, through generations and millennia, these stories have endured. They've emigrated from Sumerian tablets to scrolls to comic book panels to Apple tablets. The story of the person who stands up to fight their monster, even when death is certain, has accompanied humanity from Gilgamesh’s (debatably) heroic adventure through Mesopotamia to George Bush Jr.’s (debatably) heroic adventure through Mesopotamia.
+     These stories survive because there is a chamber in the human soul that never stops believing them. There is a chamber in the human soul that doesn't care that Dwarves do not exist or that winged sandals would never generate enough horsepower of lift to grant Hermes flight. Stories and heroes live in this illogical chamber of the human soul. And, on a good day, so do I.
+        Modern stories also take their heroes from this chamber, they just dress them from a different wardrobe. Whether they're wearing capes, spurs, or a red hunting hat, these heroes battle monsters.
+          Despite what we've been told, none of these heroes have ever existed (I'm looking at you, Robin Hood). These stories are lies. So why does this "chamber of the human soul" that I’m raving about matter? Doesn't it sound like something that belongs on a motivational refrigerator magnet?
+          As ink on a page these stories have no power. Verbs can't bandage wounds. Semicolons won’t cure Ebola. Words alone don’t change anything.
+   That is where Dungeons and Dragons comes in. I think we need to let the heroes from these stories seep into ourselves. We can’t watch anyone else fight our battles. We must find a way to fight them ourselves.
+    In my own case, the Dragon is my mother's depression and the Dungeon is the Psychiatric unit of South Understone hospital. This dragon curls itself around her mind and not her body. I can smell its breath in every cigarette, and hear its roar in every sob.
+     I'll never win this fight. I’m not a hero (that’s just me trying to be humble, of course I’m a hero). I can’t stab her panic attacks with a lance and I can’t decapitate her abandonment issues with a broadsword. This battle will be won or lost in her neural synapses and her dopamine receptors. I can’t control the neurons that have conspired to thwart my mom’s attempts at a pleasant life. But I can unsheath my #2 pencil, and I can write her a note that reminds her of that chamber in her soul that refuses to give up.
+     They may not be animated skeletons or Warlocks or Ethereal Cyclopes, but the world is filled with monsters. Some cover continents and others can fit inside blood cells. I’m sure you’re dueling at least one of them right now. Perhaps we can all feel a little better knowing that across our apartment halls and on the sidewalk and in airports and underneath hoodies, people are dueling right along with you.
+   But here is the fundamental lesson that Dungeons and Dragons has to teach us --- it’s the reason we care to play the game at all and it’s why they are still printing new Dungeons and Dragons books after thirty years and five editions --- fighting monsters can be fun. Some bizarre part of us needs these battles. We build our egos on top of the monsters we’ve defeated and we read our identities in the scars we’ve accumulated.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+<!-- modal 3 -->
+<div class="modal fade" id="myModal3" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Physics</h4>
+      </div>
+      <div class="modal-body">
+    <p>    Hayley needs an 88% to get an A for the year, a 48% to get a B for the year, and a -2% to get a C for the year. That last one is more likely than it seems. </p>
+
+<p>  The fifth question on her AP physics final asks her to determine the frequency of a red visible lightwave (λ = 650 nm). Instead of an answer, she draws Albert Einstein giving a handjob to Sir Isaac Newton. This is the most physics-related response she’s given so far. </p>
+
+  <p> Three and a half months ago, Hayley was the girl you would ask for the answers to the physics homework. Three and a half months ago, she would have given you the answers.
+
+  They would have been the right ones, too. </p>
+
+  <p> The next question is about centrifugal force. Hayley responds with a limerick about MC Hammer. </p>
+
+  <p> Hayley isn’t just misbehaving to give her teacher something to talk about in the teacher’s lounge. No, she’s only misbehaving because physics misbehaved first. This misbehavior started right after It happened. Since then, the porch door has been opening on its own. The swing in the backyard has been swiveling by itself. The balls at tennis practice have been hanging still in midair, forgetting to fall. Raindrops have been falling upwards. On top of all these, the day after The Second Funeral, every sharp knife in her house disappeared.
+
+  But that last one has nothing to do with physics misbehaving. That was just Hayley’s mom. When Hayley asked why all the knives were gone, she got the response, “It’s not that I don’t trust you around them, it’s just…”
+
+  She didn’t elaborate. It turns out that Hayley’s method of dealing with existential problems (talk about it) is different from her mom’s method of dealing with existential problems (don’t). It was Hayley’s mom who coined the term It to describe her husband’s death. And when Hayley’s grandmother killed herself a month later, Hayley’s mom referred to it as “The Accident.” </p>
+
+  On the test, Hayley gets to a question about gravity. She decides to skip it. She always skips gravity questions these days, even when she’s actually trying to do well. Before Hayley can move on, she notices the gravity formula the teacher has given:  g=GM/r2.
+
+  Before this year, Hayley lived a bubblewrapped life. All broken bones were minor, all hospital visits lasted less than three days, all cuts just rusted into scars. Tragedies were reserved for other people. Of course, there was never any bubble wrap. Physics works the same on everyone. g=GM/r2 is true, whether it’s just sitting there in the middle of your physics final, or it’s pulling your dad forty feet to the concrete. And yes, that is what happened to Hayley’s dad. There was a rumor circulating that he’d been pushed. Hayley wishes it were true. It would be easier to hate a person than a formula.
+
+  After It happened, Hayley saw gravity shift. People were pulled to her, offering different variations on the phrase, “I am here if you want to talk.” The question, “How are you doing?” became way heavier. Her physics textbook (which usually represented about half the weight of her backpack) was light in the way a frisbee is light. People saw her appearance at parties as some sort of brave thing to do.
+
+  And at one of those parties, she finally managed to kiss a boy, Eric Nuemman, from a social circle that intersected with hers. And yes, people thought it was weird that the girl whose father had just died (and did you hear that her grandmother killed herself, too?) was kissing some boy she hardly knew. But those people’s murmurs were light in the same way that the physics textbook was light.
+
+  As nice as kissing him was, it was Eric Nuemann who caused physics to give up completely. He did this by standing still. Specifically, by standing still in a street without noticing that a car was doing fifty towards him. He survived, but his ability to walk didn’t.
+
+  And this is when Hayley became certain that the universe itself was conspiring against her. When one tragedy happens, it tears your life up. When another happens, it is a Hard Time. But when three tragedies happen, it’s hard not to take it personally.
+
+  The physics room is filled with the sound of physics being scrutinized, which happens to be silence. And then Kevin raises his hand and says, “Uhh, Mrs. Kelmer…I’ve been working on it for twenty minutes, and I don’t think finding an answer to number fifteen is, like, physically possible.”
+
+  Mrs. Kelmer leafs through her copy of the test. She gets that expression teachers get when they’re trying to decide whether to admit a mistake or to claim that they’d intended it.
+
+  “Oh,” Mrs. Kelmer says, “I…you’re right.” There’s a groan from the class. Several people say that they were stuck on that one.
+
+  And that’s when Hayley starts to laugh.
+
+  Mrs. Kelmer waits for Hayley to stop laughing. But Hayley doesn’t stop laughing. And so
+
+  Mrs. Kelmer asks, “Excuse me, Hayley, what is so funny?”
+
+  And Hayley points to what is so funny that it’s making her disrupt this whole class.
+
+  Eventually, Hayley will go back to the bubblewrapped world. Tests will be scary again. Tennis balls will fall in their usual parabolas. Knives will reappear in the kitchen drawers. But right now there is no bubble wrap for her.
+
+  And so what does Hayley point at? Not the limerick she wrote. Not the drawing of Newton and Einstein sharing an intimate moment. It isn’t on her test at all.
+
+  Hayley points to all the other students. They’ve been doing for a few minutes what she’s been doing all year: trying to make sense of physics that doesn’t make sense.    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+</div>
+
+<div class = "jumbotron" id = "dragon">
+  <center>
+  <h1> Time to Battle the Dragon </h1>
+</center>
+<br>
+<br>
+
+                        <div  id = "questions" align = "center">
+                          <form class="myform" id = "form2">
+<label for=""> How do you deal with it? </label>
+                            <select name="weapon">
+                              <option > Arrows</option>
+                              <option >Sword</option>
+                              <option >Friendliness</option>
+                              <option >I'd Join it</option>
+                            </select>
+                            <label for=""> How do you make friends with it?</label>
+                            <select name="Language">
+                              <option value="volvo">Bring it tea</option>
+                              <option value="saab">Brag about my 3.7 GPA </option>
+                              <option value="mercedes"> Give it a nickname </option>
+                              <option value="audi">Watch "the Office" with it</option>
+                            </select>
+                            <label for=""> What do you do with it? </label>
+                            <select name="cars">
+                              <option value="volvo">Go to a movie </option>
+                              <option value="saab">Sing along to Hamilton</option>
+                              <option value="mercedes">Fly together</option>
+                              <option value="audi">Watch Game of Thrones with it</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+</div>
+<div class = "jumbotron" id = "tresoro">
+<div class = "container">
+  <div class = "row">
+<center>
+  <h1 > <strong> You Have Won! </strong></h1>
+  <h3> Click on the Portrait for a Resume </h3>
+  <h3> Or scroll down to see other sites I've worked on </h3>
+</center>
+  </div>
+    <div class = "row">
+      <center>
+      <a href = "resume.pdf">
+      <img id = "danPic" src = "danpic.png">
+      </a>
+      </center>
+    </div>
+
+</div>
+</div>
+
+
+<div id = "sites">
   <iframe src="https://danielfrancisolivieri.github.io/" name="targetframe" allowTransparency="true" scrolling="no" align = "center" frameborder="0" ></iframe>
   <a href= "https://danielfrancisolivieri.github.io/">
     </a>
+    <!--
     <iframe src="https://danielfrancisolivieri.github.io/Martin/" name="targetframe" allowTransparency="true" scrolling="no" align = "center" frameborder="0" id = "martin" ></iframe>
     <a href= "https://danielfrancisolivieri.github.io/Martin/">
       </a>
+    -->
       <iframe src="http://jimskon.com/solar/Solar.html" name="targetframe" allowTransparency="true" scrolling="no" align = "center" frameborder="0" ></iframe>
       <a href= "http://jimskon.com/solar/Solar.html"></a>
       <iframe src="http://mappingancienttexts.net/visualizations/cassiope/" name="targetframe" allowTransparency="true" scrolling="no" align = "center" frameborder="0" ></iframe>
       <a href= "http://mappingancienttexts.net/visualizations/cassiope/"></a>
+
+
 
 
 <footer>
