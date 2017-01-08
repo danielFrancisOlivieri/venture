@@ -37,9 +37,11 @@
 <script type="text/javascript" src="progression.min.js"></script>
 
     <script>
+// reveals the last pages
+$(document).ready(function(){
 
 
-
+});
 // progresion jQuery
     jQuery(document).ready(function($) {
             $("#form1").progression({
@@ -124,8 +126,27 @@ $(document).ready(function(){
 $("#followerText").text(toAddTo);
 $("#jumbo2").show();
 $("#arrow2").show();
+$("#follower").show();
 
-$("#bard").text("Hello, " + $("#name").val() + ", what do you want to hear?");
+// change name
+if ($("#name").val() == "" )
+{
+  $("#NameFollower").text("Daniel");
+  $("#bard").text("Hello Daniel, what do you want to hear?");
+}
+else {
+  $("#NameFollower").text($("#name").val());
+  $("#bard").text("Hello " + $("#name").val() + ", what do you want to hear?");
+}
+// change GPA
+if ($("#GPA1").val() == "" )
+{
+//  $("#GPA2").text("Daniel");
+}
+else {
+  $("#GPA2").text( "Brag about my " +  $("#GPA1").val() + " GPA");
+}
+
 console.log("Hello World");
     });
 });
@@ -566,6 +587,7 @@ top: 76px;
           background-image: url("http://www.nerdsonearth.com/wp-content/uploads/2016/02/SCAG_2560x1600_Wallpaper.jpg");
           background-size: 100%;
           display: block;
+          cursor: crosshair;
         }
 
         #jumbo2
@@ -636,7 +658,14 @@ top: 76px;
         {
           background-image: url("danpic.png");
         }
-
+a
+{
+  text-decoration: none;
+}
+a:hover
+{
+  text-decoration: none;
+}
 #follower
 {
   background-color: #F44336;
@@ -646,12 +675,15 @@ top: 76px;
   float:left;
   text-align: center;
   position: fixed;
-  height: 100px;
-  width: 100px;
+  height: 250px;
+  width: 250px;
   color: black;
-  z-index: 10;
+  z-index: 330;
   border-width: thick;
-
+background-image: url("https://s-media-cache-ak0.pinimg.com/originals/b6/a0/39/b6a039789d8624d4d50f43e8f9d91bed.jpg");
+   background-position: -97px -46px;
+   background-size: 500px;
+   display: none;
 }
 
 #orc1
@@ -662,7 +694,7 @@ top: 76px;
   background-color: none;
   top: 0;
   left: 0px;
-  cursor: crosshair;
+
 
 }
 
@@ -715,13 +747,14 @@ display: inline-block;
       margin-bottom:5px;
       color:white;
         }
-    #Go,  select,  input,textarea{
+    #Go,  select,  input,textarea
+    {
             width:100%;
       padding:10px;
       border-radius:3px;
       border:0px;
         }
-input:focus,textarea:focus
+input:focus,textarea:focus, select:focus
 {
   outline:0;
 
@@ -757,6 +790,7 @@ input:focus,textarea:focus
 #sites
 {
   margin: 0px;
+  display: none;
 }
 
 .myButton2 {
@@ -816,7 +850,10 @@ input:focus,textarea:focus
 #tresoro
 {
   background-image: url("http://2.bp.blogspot.com/-zPNcpnb_pvI/Vecsyaq-C1I/AAAAAAAABi0/iCN5kwmX_Zw/s1600/90653cadfa9d36adfec01a4fc0ba9f81d6a084e0.jpg");
-color: #F4402F;
+color: white;
+text-shadow: 2px 2px 4px #666;
+text-decoration: none;
+display: none;
 }
 
 select
@@ -834,9 +871,15 @@ select
   border-radius: 100%;
   align-items: center;
 height: 300px;
-vertical-align:middle;
+
 margin-top: 100px;
 margin-left: 50px;
+margin-bottom: 207px;
+}
+
+#danCenter
+{
+  margin-bottom: 10px;
 }
 
 a
@@ -850,7 +893,7 @@ a
 
 #tresoro h1
 {
-  margin-top: 10%;
+
 }
 
 #jumbo5 h3
@@ -858,25 +901,59 @@ a
   margin-top: 10px;
 }
 
+
+#NameFollower
+{
+  margin-top: 150px;
+  color: white;
+   text-shadow: 2px 2px 4px #666;
+}
+
+#followerText
+{
+  color: white;
+}
     </style>
 </head>
 <body>
+<!--
+Hello!
+It's nice to know that you're inspecting the element of my page
+Here, have a drawing:
+
+    ."".    ."",
+    |  |   /  /
+    |  |  /  /
+    |  | /  /
+    |  |/  ;-._
+    }  ` _/  / ;
+    |  /` ) /  /
+    | /  /_/\_/\
+    |/  /      |
+    (  ' \ '-  |
+     \    `.  /
+      |      |
+      |      |
+-->
   <div id = "jumbo1" class = "jumbotron text-center">
 
 <div id = "follower" data-toggle="tooltip" title = "This keeps track of your experience points.">
   <div class = "container">
 <div class = "row" >
-XP
+
 
 </div>
-<hr>
+
 
     <div class = "row">
-<p id = "followerText" > </p>
+
+<center> <h3 id = "NameFollower" > <i> Gort </i> </h3> </center>
+<!-- <center> <h3 id = "followerText" > <i> </i> </h3> </center> -->
+
 </div>
 </div>
 </div>
-</a>
+
 <div class = "badGuy" id = "orc1"> </div>
 
   <h1 id = "subhead">  D&D</h1>
@@ -900,10 +977,7 @@ XP
 
           <p>
               <label for="">Class</label>
-              <input  data-progression = "" type="text" data-helper="This could be anything from ninja-warlock to accountant" placeholder="Developer & Writer">
-          </p>
-
-
+             <input  data-progression = "" type="text" data-helper="This could be anything from ninja-warlock to accountant" placeholder="Developer & Writer">
 
               <p class="left">
               <label for="">School</label>
@@ -912,7 +986,7 @@ XP
 
               <p class="right">
               <label for="">GPA</label>
-              <input  data-progression = "" type="text" data-helper="A solid GPA is a huge help to any true adventurer" placeholder="3.7">
+              <input id = "GPA1" data-progression = "" type="text" data-helper="A solid GPA is a huge help to any true adventurer" placeholder="3.7">
           </p>
 
           <p>
@@ -921,8 +995,8 @@ XP
           </p>
 
           <p>
-              <label for="">Personality</label>
-              <textarea data-progression = ""  placeholder = "Work it" data-helper="What's your character like?"></textarea>
+              <label for="">Favorite Book</label>
+              <input data-progression = ""  placeholder = "Work it" data-helper="What's your character like?"></input>
           </p>
 
           <p>
@@ -1199,7 +1273,7 @@ Answer key: C, A, D, C, D, C, A, C, D, D, D, B. No room for variation.</p>
 
 <div class = "jumbotron" id = "dragon">
   <center>
-  <h1> Time to Battle the Dragon </h1>
+  <h1> Battle the Dragon </h1>
 </center>
 <br>
 <br>
@@ -1216,7 +1290,7 @@ Answer key: C, A, D, C, D, C, A, C, D, D, D, B. No room for variation.</p>
                             <label for=""> How do you make friends with it?</label>
                             <select name="Language">
                               <option value="volvo">Bring it tea</option>
-                              <option value="saab">Brag about my 3.7 GPA </option>
+                              <option id = "GPA2" value="saab">Brag about my 3.7 GPA </option>
                               <option value="mercedes"> Give it a nickname </option>
                               <option value="audi">Watch "the Office" with it</option>
                             </select>
@@ -1233,22 +1307,23 @@ Answer key: C, A, D, C, D, C, A, C, D, D, D, B. No room for variation.</p>
                     </div>
 
 </div>
+
 <div class = "jumbotron" id = "tresoro">
-<div class = "container">
-  <div class = "row">
+
+<div>
 <center>
   <h1 > <strong> You Have Won! </strong></h1>
-  <h3> Click on the Portrait for a Resume </h3>
-  <h3> Or scroll down to see other sites I've worked on </h3>
+  <h3> Click my Face for a Resume </h3>
+  <h3> Scroll to See More Sites by Me</h3>
 </center>
-  </div>
-    <div class = "row">
-      <center>
-      <a href = "resume.pdf">
-      <img id = "danPic" src = "danpic.PNG">
-      </a>
+
+
+      <center id = "danCenter">
+<a href = "resume.pdf" target="_blank">
+      <img id = "danPic" src = "danpic.png">
+</a>
       </center>
-    </div>
+
 
 </div>
 </div>
