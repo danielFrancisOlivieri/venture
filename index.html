@@ -119,6 +119,20 @@ if (toAddTo > 4)
     });
 });
 
+var dragonEncountered = false;
+$(document).ready(function(){
+
+$("#dragon").mouseenter(function(){
+if (dragonEncountered == false)
+{
+ $.playSound('dragon');
+ dragonEncountered = true;
+}
+
+})
+
+
+});
 // character creation
 $(document).ready(function(){
     $("#Go").click(function(){
@@ -127,7 +141,7 @@ $("#followerText").text(toAddTo);
 $("#jumbo2").show();
 $("#arrow2").show();
 $("#follower").show();
-
+ $.playSound('tada');
 // change name
 if ($("#name").val() == "" )
 {
@@ -138,14 +152,42 @@ else {
   $("#NameFollower").text($("#name").val());
   $("#bard").text("Hello " + $("#name").val() + ", what do you want to hear?");
 }
-// change GPA
-if ($("#GPA1").val() == "" )
+// change Book
+/*
+if ($("#Book1").val() == "" )
 {
-//  $("#GPA2").text("Daniel");
+//  $("#Book2").text("Daniel");
 }
 else {
-  $("#GPA2").text( "Brag about my " +  $("#GPA1").val() + " GPA");
+  $("#Book2").text( "Brag about my " +  $("#Book1").val() + " Book");
 }
+*/
+// change animal
+if ($("#SpiritAnimal").val() == "" )
+{
+//  $("#Book2").text("Daniel");
+}
+else {
+  $("#spiritAnimal2").text( "My " +  $("#SpiritAnimal").val());
+}
+
+// change animal
+if ($("#SpiritAnimal").val() == "" )
+{
+//  $("#Book2").text("Daniel");
+}
+else {
+  $("#spiritAnimal2").text( "My " +  $("#SpiritAnimal").val());
+}
+
+if ($("#SpiritAnimal").val() == "" )
+{
+//  $("#Book2").text("Daniel");
+}
+else {
+  $("#hangout").text( "Lend it your copy of " +  $("#Book1").val());
+}
+
 
 console.log("Hello World");
     });
@@ -369,11 +411,7 @@ function set_scroll() {
     <style type="text/css">
 
 
-footer
-{
-background-color: #47adca;
-text-align: center;
-}
+
 
         #grid1 {
             background: lightgoldenrodyellow;
@@ -593,7 +631,7 @@ top: 76px;
         #jumbo2
         {
           color: white;
-        height: 900px;
+        height: 820px;
         background-image: url("https://s-media-cache-ak0.pinimg.com/originals/38/d0/16/38d016d0b6064be29639370929dc626d.jpg");
         background-size: 100%;
         }
@@ -622,8 +660,16 @@ top: 76px;
           height: 104vh;
           margin-bottom: 0;
           margin-top: 0;
+          display: block;
+          text-align: center;
 
+          align-items: center;
+          text-shadow: 2px 2px 4px #666;
           position: relative;
+        }
+        .modal-content
+        {
+        text-shadow: none;
         }
 
         body
@@ -645,13 +691,14 @@ top: 76px;
           text-align: center;
           margin-top: 15px;
           align-items: center;
+          text-shadow: 2px 2px 4px #666;
         }
 
         iframe
         {
           height: 170vh;
           width: 100%;
-
+margin: 0px;
 
         }
         #dan
@@ -747,21 +794,24 @@ display: inline-block;
       margin-bottom:5px;
       color:white;
         }
-    #Go,  select,  input,textarea
+    #Go, #Go2, select,  input,textarea
     {
             width:100%;
       padding:10px;
       border-radius:3px;
       border:0px;
+      background-color: white;
+      color: black;
         }
 input:focus,textarea:focus, select:focus
 {
   outline:0;
 
 }
-#Go
+
+#Go2
 {
-  background-color: white;
+  width: 300px;
 }
 
 #formDiv
@@ -829,6 +879,29 @@ input:focus,textarea:focus, select:focus
 	background-color:#f43f2f;
 }
 
+.myButton3 {
+	background-color:#f44236;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #f44236;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.myButton3:hover {
+	background-color:#f44236;
+}
+.myButton3:active {
+	position:relative;
+	top:1px;
+}
+
 .modal-content
 {
   color: black;
@@ -851,6 +924,7 @@ input:focus,textarea:focus, select:focus
   background-image: url("http://3.bp.blogspot.com/-gA_uRC-u0EA/T_ETNA4-kGI/AAAAAAAABHU/handP8cuAsQ/s1600/flight-paladin.jpg");
   background-size: 100%;
   background-position: center;
+
 }
 #tresoro
 {
@@ -896,10 +970,6 @@ a
   text-align: center;
 }
 
-#tresoro h1
-{
-
-}
 
 #jumbo5 h3
 {
@@ -918,6 +988,24 @@ a
 {
   color: white;
 }
+
+fa fa-check-circle
+{
+  display: inline-block;
+}
+select
+{
+  display: inline-block;
+}
+
+footer
+{
+background-color: #f44336;
+color: black;
+text-align: center;
+margin-bottom: 0px;
+}
+
     </style>
 </head>
 <body>
@@ -942,7 +1030,7 @@ Here, have a drawing:
 -->
   <div id = "jumbo1" class = "jumbotron text-center">
 
-<div id = "follower" data-toggle="tooltip" title = "This keeps track of your experience points.">
+<div id = "follower" data-toggle="tooltip" title = "This represents your character.">
   <div class = "container">
 <div class = "row" >
 
@@ -985,25 +1073,18 @@ Here, have a drawing:
              <input  data-progression = "" type="text" data-helper="This could be anything from ninja-warlock to accountant" placeholder="Developer & Writer">
 
               <p class="left">
-              <label for="">School</label>
-              <input data-progression = "" type="text" data-helper="Where did your character learn their tricks?" placeholder="Kenyon College">
-          </p>
-
-              <p class="right">
-              <label for="">GPA</label>
-              <input id = "GPA1" data-progression = "" type="text" data-helper="A solid GPA is a huge help to any true adventurer" placeholder="3.7">
+              <label for="">Special Ability</label>
+              <input data-progression = "" type="text" data-helper="What's your special trick?" placeholder="World Creation">
           </p>
 
           <p>
-              <label for="">Alignment</label>
-              <input data-progression = "" placeholder = "Trying to be Good" data-progression name="" data-helper="Are you good? Bad? Ugly?"></textarea>
+              <label for="">Spirit Animal</label>
+              <input id = "SpiritAnimal" data-progression = ""  placeholder = "Chimpamzee" data-helper="They provide moral support and body heat"></input>
           </p>
-
-          <p>
-              <label for="">Favorite Book</label>
-              <input data-progression = ""  placeholder = "Work it" data-helper="What's your character like?"></input>
-          </p>
-
+          <p class="right">
+          <label for="">Favorite Book</label>
+          <input id = "Book1" data-progression = "" type="text" data-helper="Adventurers have a lot of time to read on the road" placeholder="The Illustrated Man">
+        </p>
           <p>
               <button type='button' id = "Go" > Create </button>
           </p>
@@ -1065,6 +1146,8 @@ Here, have a drawing:
   </div>
 
 <div id = "writing" class = "jumbotron">
+
+  <h3 id = "inn"> A Stop at the Inn </h3>
 <div class="bubble"> <p id = "bard" > Hello, Daniel Olivieri, what story do you want to hear?</p> </div>
 
 
@@ -1278,35 +1361,38 @@ Answer key: C, A, D, C, D, C, A, C, D, D, D, B. No room for variation.</p>
 
 <div class = "jumbotron" id = "dragon">
   <center>
-  <h1> Battle the Dragon </h1>
+  <h3> Face the Dragon </h3>
 </center>
 <br>
 <br>
 
                         <div  id = "questions" align = "center">
                           <form class="myform" id = "form2">
-<label for=""> How do you deal with it? </label>
+<label for=""> What do you bring with you? </label>
+<div class="input-group">
+
                             <select name="weapon">
-                              <option > Arrows</option>
-                              <option >Sword</option>
+                              <option id = "spiritAnimal2" > My chimpanzee</option>
+                              <option >A Mug of Hot Chocolate</option>
                               <option >Friendliness</option>
-                              <option >I'd Join it</option>
-                            </select>
-                            <label for=""> How do you make friends with it?</label>
-                            <select name="Language">
-                              <option value="volvo">Bring it tea</option>
-                              <option id = "GPA2" value="saab">Brag about my 3.7 GPA </option>
-                              <option value="mercedes"> Give it a nickname </option>
-                              <option value="audi">Watch "the Office" with it</option>
-                            </select>
-                            <label for=""> What do you do with it? </label>
-                            <select name="cars">
-                              <option value="volvo">Go to a movie </option>
-                              <option value="saab">Sing along to Hamilton</option>
-                              <option value="mercedes">Fly together</option>
-                              <option value="audi">Watch Game of Thrones with it</option>
+
                             </select>
 
+                            <label for=""> How do you make friends with it?</label>
+                            <select name="Language">
+                              <option value="volvo">Take it to coffee</option>
+
+                              <option value="mercedes"> Give it a fun nickname like "Champ" </option>
+                              <option id = "hangout" value="Watch 'The Office'">Watch Netflix with it</option>
+                            </select>
+                            <label for=""> Now what do you do with the dragon? </label>
+                            <select name="cars">
+                              <option value="volvo">Fly on its back </option>
+                              <option value="saab">Bake cookies together</option>
+                              <option value="mercedes">Make a fun website together</option>
+                            <!--  <option value="audi">Watch Game of Thrones with it</option> -->
+                            </select>
+<a type='button' class = "myButton3" href = "#tresoro" > Go </a>
                         </div>
 
                     </div>
@@ -1317,44 +1403,44 @@ Answer key: C, A, D, C, D, C, A, C, D, D, D, B. No room for variation.</p>
 
 <div>
 <center>
-  <h1 > <strong> You Have Won! </strong></h1>
+  <h1 > <strong> Quest Completed! </strong></h1>
   <h3> Click my Face for a Resume </h3>
   <h3> Scroll to See More Sites by Me</h3>
 </center>
 
 
       <center id = "danCenter">
-<a href = "Resume.pdf" target="_blank">
-      <img id = "danPic" src = "danpic.PNG">
+<a href = "resume.pdf" target="_blank">
+      <img id = "danPic" src = "danpic.png">
 </a>
       </center>
 
 
 </div>
 </div>
+<footer>
+  <p >
+  Thanks to:
+  RV Javascript, Steve Prescott, syntaxxx.com, www.devbattles.com, www.sololearn.com, www.myexactamundo.co, www.nerdsonearth.com, loverajoel, dungeonsmaster.com, Github.com, and of course my parents.
+</p>
+</footer>
 
-
+<!--
 <div id = "sites">
   <iframe src="https://danielfrancisolivieri.github.io/" name="targetframe" allowTransparency="true" scrolling="no" align = "center" frameborder="0" ></iframe>
   <a href= "https://danielfrancisolivieri.github.io/">
     </a>
-    <!--
+
     <iframe src="https://danielfrancisolivieri.github.io/Martin/" name="targetframe" allowTransparency="true" scrolling="no" align = "center" frameborder="0" id = "martin" ></iframe>
     <a href= "https://danielfrancisolivieri.github.io/Martin/">
       </a>
-    -->
+
       <iframe src="http://jimskon.com/solar/Solar.html" name="targetframe" allowTransparency="true" scrolling="no" align = "center" frameborder="0" ></iframe>
       <a href= "http://jimskon.com/solar/Solar.html"></a>
       <iframe src="http://mappingancienttexts.net/visualizations/cassiope/" name="targetframe" allowTransparency="true" scrolling="no" align = "center" frameborder="0" ></iframe>
       <a href= "http://mappingancienttexts.net/visualizations/cassiope/"></a>
 
-
-
-
-<footer>
-Designed by Daniel Olivieri
-</footer>
-
 </div>
+-->
 </body>
 </html>
